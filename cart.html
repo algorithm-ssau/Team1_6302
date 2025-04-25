@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин велосипедов</title>
+    <title>Корзина - Магазин велосипедов</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,12 +12,12 @@
             <a href="/" class="logo">VeloPro</a>
             <nav>
                 <ul class="header_list">
-                    <li><a href="index.html" class="header_link active">Главная</a></li>
+                    <li><a href="index.html" class="header_link">Главная</a></li>
                     <li><a href="catalog.html" class="header_link">Каталог</a></li>
                     <li><a href="about.html" class="header_link">О нас</a></li>
                     <li><a href="" class="header_link">Контакты</a></li>
                     <li>
-                        <a href="cart.html" class="cart_icon header_link">
+                        <a href="cart.html" class="cart_icon header_link active">
                             Корзина
                             <span class="cart_count">0</span>
                         </a>
@@ -27,11 +27,34 @@
         </div>
     </header>
     <main>
-        <section>
-            <h1>Добро пожаловать в VeloShubinPro</h1>
-            <p>Лучшие велосипеды для вашего активного образа жизни</p>
-            <a href="catalog.html" class="browse-catalog">Перейти в каталог</a>
-        </section>
+        <div class="cart-header">
+            <h1>Корзина</h1>
+            <a href="catalog.html" class="back-button">В каталог</a>
+        </div>
+        
+        <div class="cart-container">
+            <div class="cart-items">
+                <!-- Здесь будут отображаться товары в корзине -->
+                <div class="empty-cart-message" style="display:none;">
+                    <p>Ваша корзина пуста</p>
+                    <a href="catalog.html" class="browse-catalog">Перейти в каталог</a>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <h2>Итого</h2>
+                <div class="cart-total">
+                    <span>Товаров:</span>
+                    <span id="total-items">0</span>
+                </div>
+                <div class="cart-total">
+                    <span>Сумма:</span>
+                    <span id="total-price">0 ₽</span>
+                </div>
+                <button id="clear-cart" class="clear-cart-btn">Очистить корзину</button>
+                <button id="checkout" class="checkout-btn">Оформить заказ</button>
+            </div>
+        </div>
     </main>
     <footer>
         <div class="footer_content">
