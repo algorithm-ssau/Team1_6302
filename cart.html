@@ -34,25 +34,19 @@
         
         <div class="cart-container">
             <div class="cart-items">
-                <!-- Здесь будут отображаться товары в корзине -->
-                <div class="empty-cart-message" style="display:none;">
-                    <p>Ваша корзина пуста</p>
-                    <a href="catalog.html" class="browse-catalog">Перейти в каталог</a>
-                </div>
+                <!-- Здесь будут отображаться товары в корзине (динамически) -->
+                
             </div>
             
             <div class="cart-summary">
                 <h2>Итого</h2>
                 <div class="cart-total">
-                    <span>Товаров:</span>
-                    <span id="total-items">0</span>
-                </div>
-                <div class="cart-total">
+                   
                     <span>Сумма:</span>
-                    <span id="total-price">0 ₽</span>
+                    <span class = "cart-total-price">0 ₽</span>
                 </div>
-                <button id="clear-cart" class="clear-cart-btn">Очистить корзину</button>
-                <button id="checkout" class="checkout-btn">Оформить заказ</button>
+                <button class="clear-cart-btn">Очистить корзину</button>
+                <button class="checkout-btn">Оформить заказ</button>
             </div>
         </div>
     </main>
@@ -70,10 +64,10 @@
             <div class="footer_section">
                 <h3>Категории</h3>
                 <ul>
-                    <li><a href="">Горные велосипеды</a></li>
-                    <li><a href="">Шоссейные велосипеды</a></li>
-                    <li><a href="">Городские велосипеды</a></li>
-                    <li><a href="">Детские велосипеды</a></li>
+                    <li><a href="catalog.html?category=mountain">Горные велосипеды</a></li>
+                    <li><a href="catalog.html?category=road">Шоссейные велосипеды</a></li>
+                    <li><a href="catalog.html?category=city">Городские велосипеды</a></li>
+                    <li><a href="catalog.html?category=children">Детские велосипеды</a></li>
                 </ul>
             </div>
             <div class="footer_section">
