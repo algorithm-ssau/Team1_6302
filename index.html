@@ -33,6 +33,15 @@
             <a href="catalog.html" class="browse-catalog">Перейти в каталог</a>
         </section>
 
+        <section class="promo-banner">
+            <div class="promo-content">
+                <h2>ВЕСЕННЯЯ РАСПРОДАЖА!</h2>
+                <p>Скидки до 30% на все горные велосипеды</p>
+                <p class="promo-timer">До конца акции: <span id="promo-countdown">3 дня 8 часов</span></p>
+                <a href="catalog.html?category=mountain" class="promo-button">Выбрать со скидкой</a>
+            </div>
+        </section>
+
         <section class="categories-section">
             <h2 class="section-title">Категории велосипедов</h2>
             <div class="categories-grid">
@@ -152,7 +161,67 @@
             
             // Загружаем популярные товары
             loadPopularProducts();
+            
+            // Запускаем таймер акции
+            updatePromoCountdown();
         });
+        
+        // Функция для обновления таймера акции
+        function updatePromoCountdown() {
+            // Устанавливаем дату окончания акции (3 дня от текущего момента для демо)
+            const now = new Date();
+            const endDate = new Date(now);
+            endDate.setDate(now.getDate() + 3);
+            endDate.setHours(now.getHours() + 8);
+            
+            // Запускаем обновление таймера каждую минуту
+            function updateTimer() {
+                const now = new Date();
+                const timeDiff = endDate - now;
+                
+                if (timeDiff <= 0) {
+                    document.getElementById('promo-countdown').textContent = 'Акция завершена';
+                    return;
+                }
+                
+                // Рассчитываем дни, часы и минуты
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                // Обновляем текст таймера
+                let timerText = '';
+                if (days > 0) timerText += `${days} ${getDayWord(days)} `;
+                timerText += `${hours} ${getHourWord(hours)} ${minutes} ${getMinuteWord(minutes)}`;
+                
+                document.getElementById('promo-countdown').textContent = timerText;
+            }
+            
+            // Функции для правильного склонения слов
+            function getDayWord(days) {
+                if (days === 1) return 'день';
+                if (days >= 2 && days <= 4) return 'дня';
+                return 'дней';
+            }
+            
+            function getHourWord(hours) {
+                if (hours === 1 || hours === 21) return 'час';
+                if ((hours >= 2 && hours <= 4) || (hours >= 22 && hours <= 24)) return 'часа';
+                return 'часов';
+            }
+            
+            function getMinuteWord(minutes) {
+                if (minutes % 10 === 1 && minutes !== 11) return 'минута';
+                if ([2, 3, 4].includes(minutes % 10) && ![12, 13, 14].includes(minutes)) return 'минуты';
+                return 'минут';
+            }
+            
+            // Первое обновление таймера
+            updateTimer();
+            
+            // Обновляем таймер каждую минуту
+            setInterval(updateTimer, 60000);
+        }
         
         // Функция для загрузки популярных товаров
         function loadPopularProducts() {
