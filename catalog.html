@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог велосипедов - VeloPro</title>
+    <title>Каталог - Магазин велосипедов</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
                     <li><a href="index.html" class="header_link">Главная</a></li>
                     <li><a href="catalog.html" class="header_link active">Каталог</a></li>
                     <li><a href="about.html" class="header_link">О нас</a></li>
-                    <li><a href="" class="header_link">Контакты</a></li>
+                    <li><a href="contacts.html" class="header_link">Контакты</a></li>
                     <li>
                         <a href="cart.html" class="cart_icon header_link">
                             Корзина
@@ -29,71 +29,19 @@
     <main>
         <div class="catalog-header">
             <h1>Каталог велосипедов</h1>
-            <a href="index.html" class="back-button">На главную</a>
+        
+        <div class="categories-filter">
+            <a href="catalog.html" class="category-link">Все</a>
+            <a href="catalog.html?category=mountain" class="category-link">Горные</a>
+            <a href="catalog.html?category=road" class="category-link">Шоссейные</a>
+            <a href="catalog.html?category=city" class="category-link">Городские</a>
+            <a href="catalog.html?category=children" class="category-link">Детские</a>
         </div>
-        <!-- Товар 1 -->
-        <div class="catalog-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="img/mountain_bike.jpg" alt="Горный велосипед">
-                </div>
-                <div class="product-info">
-                    <h3>Горный велосипед XTR Pro</h3>
-                    <p class="product-category">Горные велосипеды</p>
-                    <p class="product-description">Надежный горный велосипед с амортизаторами и дисковыми тормозами.</p>
-                    <div class="product-footer">
-                        <span class="product-price">45 900 ₽</span>
-                        <button class="add-to-cart">В корзину</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Товар 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="img/road_bike.jpg" alt="Шоссейный велосипед">
-                </div>
-                <div class="product-info">
-                    <h3>Шоссейный велосипед RoadMaster</h3>
-                    <p class="product-category">Шоссейные велосипеды</p>
-                    <p class="product-description">Легкий и быстрый шоссейный велосипед для скоростной езды по асфальту.</p>
-                    <div class="product-footer">
-                        <span class="product-price">63 500 ₽</span>
-                        <button class="add-to-cart">В корзину</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Товар 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="img/city_bike.jpg" alt="Городской велосипед">
-                </div>
-                <div class="product-info">
-                    <h3>Городской велосипед CityRider</h3>
-                    <p class="product-category">Городские велосипеды</p>
-                    <p class="product-description">Комфортный городской велосипед с удобной посадкой и корзиной.</p>
-                    <div class="product-footer">
-                        <span class="product-price">32 800 ₽</span>
-                        <button class="add-to-cart">В корзину</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Товар 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="img/children_bike.jpg" alt="Детский велосипед">
-                </div>
-                <div class="product-info">
-                    <h3>Детский велосипед KidStar</h3>
-                    <p class="product-category">Детские велосипеды</p>
-                    <p class="product-description">Яркий и безопасный детский велосипед с дополнительными колесами.</p>
-                    <div class="product-footer">
-                        <span class="product-price">15 200 ₽</span>
-                        <button class="add-to-cart">В корзину</button>
-                    </div>
-                </div>
-            </div>
+        
+        <!-- Контейнер для товаров (будет заполняться динамически) -->
+        <div class="product-grid">
+            <!-- Здесь будут отображаться товары из API -->
+            <p class="loading-message">Загрузка товаров...</p>
         </div>
     </main>
     <footer>
@@ -104,16 +52,16 @@
                     <li><a href="catalog.html">Каталог</a></li>
                     <li><a href="cart.html">Корзина</a></li>
                     <li><a href="about.html">О нас</a></li>
-                    <li><a href="">Контакты</a></li>
+                
                 </ul>
             </div>
             <div class="footer_section">
                 <h3>Категории</h3>
                 <ul>
-                    <li><a href="">Горные велосипеды</a></li>
-                    <li><a href="">Шоссейные велосипеды</a></li>
-                    <li><a href="">Городские велосипеды</a></li>
-                    <li><a href="">Детские велосипеды</a></li>
+                    <li><a href="catalog.html?category=mountain">Горные велосипеды</a></li>
+                    <li><a href="catalog.html?category=road">Шоссейные велосипеды</a></li>
+                    <li><a href="catalog.html?category=city">Городские велосипеды</a></li>
+                    <li><a href="catalog.html?category=children">Детские велосипеды</a></li>
                 </ul>
             </div>
             <div class="footer_section">
@@ -134,5 +82,126 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем категорию из URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category') || 'all';
+            
+            // Подсвечиваем активную категорию
+            document.querySelectorAll('.category-filter a').forEach(link => {
+                if ((category === 'all' && link.dataset.category === 'all') || 
+                    link.dataset.category === category) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Загружаем товары через API
+            loadProducts(category);
+            
+            // Обновляем счетчик товаров в корзине
+            updateCartCount();
+        });
+        
+        // Загрузка товаров
+        function loadProducts(category) {
+            fetch(`/api/products?category=${category}`)
+                .then(response => response.json())
+                .then(products => {
+                    const productsContainer = document.getElementById('products-container');
+                    
+                    if (products.length === 0) {
+                        productsContainer.innerHTML = '<p class="no-products">В данной категории нет товаров</p>';
+                        return;
+                    }
+                    
+                    let productsHTML = '';
+                    products.forEach(product => {
+                        productsHTML += `
+                            <div class="product-card">
+                                <a href="product.html?id=${product.id}">
+                                    <div class="product-image">
+                                        <img src="${product.image}" alt="${product.name}" onerror="this.src='img/placeholder.jpg'">
+                                    </div>
+                                    <h3>${product.name}</h3>
+                                    <p class="product-price">${product.price} ₽</p>
+                                </a>
+                                <button class="add-to-cart-btn" data-id="${product.id}" data-name="${product.name}" 
+                                        data-price="${product.price}" data-image="${product.image}">В корзину</button>
+                            </div>
+                        `;
+                    });
+                    
+                    productsContainer.innerHTML = productsHTML;
+                    
+                    // Добавляем обработчики событий для кнопок "В корзину"
+                    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const product = {
+                                id: this.dataset.id,
+                                name: this.dataset.name,
+                                price: parseInt(this.dataset.price),
+                                image: this.dataset.image,
+                                quantity: 1
+                            };
+                            addToCart(product);
+                        });
+                    });
+                })
+                .catch(error => {
+                    console.error('Ошибка при загрузке товаров:', error);
+                    document.getElementById('products-container').innerHTML = 
+                        '<p class="error">Произошла ошибка при загрузке товаров. Пожалуйста, попробуйте позже.</p>';
+                });
+        }
+        
+        // Добавление товара в корзину
+        function addToCart(product) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProduct = cart.find(item => item.id === product.id);
+            
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            
+            // Показываем уведомление о добавлении товара
+            showNotification(`Товар "${product.name}" добавлен в корзину!`);
+        }
+        
+        // Обновление счетчика товаров в корзине
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.querySelector('.cart_count').textContent = cart.length;
+        }
+        
+        // Показать уведомление
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Показываем уведомление
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Скрываем и удаляем уведомление через 3 секунды
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
 </body>
 </html> 
