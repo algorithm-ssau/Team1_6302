@@ -13,6 +13,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Маршруты API
+app.use('/api/bicycles', require('./routes/bicycles'));
+
 // Статические файлы
 app.use(express.static(path.join(__dirname, '../')));
 
