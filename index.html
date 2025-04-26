@@ -27,10 +27,82 @@
         </div>
     </header>
     <main>
-        <section>
+        <section class="hero-section">
             <h1>Добро пожаловать в VeloPro</h1>
             <p>Лучшие велосипеды для вашего активного образа жизни</p>
             <a href="catalog.html" class="browse-catalog">Перейти в каталог</a>
+        </section>
+
+        <section class="categories-section">
+            <h2 class="section-title">Категории велосипедов</h2>
+            <div class="categories-grid">
+                <a href="catalog.html?category=mountain" class="category-card">
+                    <div class="category-image">
+                        <img src="img/mountain_bike.jpg" alt="Горные велосипеды">
+                    </div>
+                    <h3>Горные</h3>
+                </a>
+                <a href="catalog.html?category=road" class="category-card">
+                    <div class="category-image">
+                        <img src="img/road_bike.jpg" alt="Шоссейные велосипеды">
+                    </div>
+                    <h3>Шоссейные</h3>
+                </a>
+                <a href="catalog.html?category=city" class="category-card">
+                    <div class="category-image">
+                        <img src="img/city_bike.jpg" alt="Городские велосипеды">
+                    </div>
+                    <h3>Городские</h3>
+                </a>
+                <a href="catalog.html?category=children" class="category-card">
+                    <div class="category-image">
+                        <img src="img/children_bike.jpg" alt="Детские велосипеды">
+                    </div>
+                    <h3>Детские</h3>
+                </a>
+            </div>
+        </section>
+
+        <section class="popular-products">
+            <h2 class="section-title">Популярные товары</h2>
+            <div class="products-carousel" id="popular-products-container">
+                <!-- Сюда будут загружаться популярные товары через JavaScript -->
+                <div class="loading-spinner">Загрузка товаров...</div>
+            </div>
+        </section>
+
+        <section class="advantages-section">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <div class="advantage-icon">
+                        <img src="img/quality-icon.svg" alt="Качество">
+                    </div>
+                    <h3>Гарантия качества</h3>
+                    <p>Все наши велосипеды проходят многоступенчатый контроль качества</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">
+                        <img src="img/delivery-icon.svg" alt="Доставка">
+                    </div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставляем по всей России. Бесплатно при заказе от 10 000 ₽</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">
+                        <img src="img/service-icon.svg" alt="Сервис">
+                    </div>
+                    <h3>Сервисное обслуживание</h3>
+                    <p>Бесплатное первое ТО и скидки на все последующие работы</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">
+                        <img src="img/warranty-icon.svg" alt="Гарантия">
+                    </div>
+                    <h3>Расширенная гарантия</h3>
+                    <p>2 года гарантии на все модели и 5 лет на премиум-серию</p>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
@@ -72,5 +144,162 @@
         </div>
     </footer>
     <script src="js/api.js"></script>
+    <script>
+        // Загрузка популярных товаров
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обновляем счетчик товаров в корзине
+            updateCartCount();
+            
+            // Загружаем популярные товары
+            loadPopularProducts();
+        });
+        
+        // Функция для загрузки популярных товаров
+        function loadPopularProducts() {
+            const container = document.getElementById('popular-products-container');
+            
+            // Имитация загрузки данных (в реальном проекте здесь был бы запрос к API)
+            setTimeout(() => {
+                // Данные о популярных товарах (можно заменить на реальные данные из API)
+                const popularProducts = [
+                    {
+                        id: 1,
+                        name: 'Горный велосипед XC Pro',
+                        price: 42990,
+                        image: 'img/mountain_bike.jpg',
+                        category: 'mountain'
+                    },
+                    {
+                        id: 2,
+                        name: 'Шоссейный велосипед Road Master',
+                        price: 56990,
+                        image: 'img/road_bike.jpg',
+                        category: 'road'
+                    },
+                    {
+                        id: 3,
+                        name: 'Городской велосипед City Cruiser',
+                        price: 29990,
+                        image: 'img/city_bike.jpg',
+                        category: 'city'
+                    },
+                    {
+                        id: 4,
+                        name: 'Детский велосипед Junior Rider',
+                        price: 15990,
+                        image: 'img/children_bike.jpg',
+                        category: 'children'
+                    }
+                ];
+                
+                // Очищаем контейнер от индикатора загрузки
+                container.innerHTML = '';
+                
+                // Добавляем каждый товар в контейнер
+                popularProducts.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}" onerror="this.src='img/placeholder.jpg'">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p class="product-category">${getCategoryName(product.category)}</p>
+                            <div class="product-footer">
+                                <p class="product-price">${product.price} ₽</p>
+                                <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" 
+                                        data-price="${product.price}" data-image="${product.image}">В корзину</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(productCard);
+                });
+                
+                // Добавляем обработчики событий для кнопок "В корзину"
+                addToCartEventListeners();
+                
+            }, 1000); // Имитация задержки загрузки
+        }
+        
+        // Функция для получения названия категории по её коду
+        function getCategoryName(categoryCode) {
+            const categories = {
+                'mountain': 'Горный велосипед',
+                'road': 'Шоссейный велосипед',
+                'city': 'Городской велосипед',
+                'children': 'Детский велосипед'
+            };
+            
+            return categories[categoryCode] || categoryCode;
+        }
+        
+        // Добавляем обработчики на кнопки "В корзину"
+        function addToCartEventListeners() {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = {
+                        id: this.dataset.id,
+                        name: this.dataset.name,
+                        price: parseInt(this.dataset.price),
+                        image: this.dataset.image,
+                        quantity: 1
+                    };
+                    
+                    addToCart(product);
+                    showNotification(`Товар "${product.name}" добавлен в корзину!`);
+                });
+            });
+        }
+        
+        // Функция добавления товара в корзину
+        function addToCart(product) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProduct = cart.find(item => item.id === product.id);
+            
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+        
+        // Обновление счетчика товаров в корзине
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.cart_count').textContent = totalItems;
+        }
+        
+        // Показать уведомление
+        function showNotification(message) {
+            // Проверяем, нет ли уже уведомления
+            let notification = document.querySelector('.notification');
+            
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.className = 'notification';
+                document.body.appendChild(notification);
+            }
+            
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            // Удаляем уведомление через 3 секунды
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
 </body>
 </html> 
