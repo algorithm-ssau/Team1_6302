@@ -635,75 +635,6 @@ footer {
     background-color: #3498db;
 }
 
-/* Промо баннер */
-.promo-banner {
-    background: linear-gradient(135deg, #3498db, #2c3e50);
-    border-radius: 8px;
-    padding: 40px 20px;
-    margin-bottom: 30px;
-    color: white;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.promo-banner:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 70%);
-    background-size: cover;
-    background-position: right center;
-    opacity: 0.2;
-}
-
-.promo-content {
-    max-width: 600px;
-    position: relative;
-    z-index: 1;
-}
-
-.promo-banner h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.promo-banner p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-.promo-timer {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-}
-
-.promo-timer span {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 5px 10px;
-    border-radius: 4px;
-}
-
-.promo-button {
-    display: inline-block;
-    background-color: #e74c3c;
-    color: white;
-    font-weight: bold;
-    padding: 12px 25px;
-    border-radius: 4px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.promo-button:hover {
-    background-color: #c0392b;
-    transform: translateY(-3px);
-}
-
 /* Категории на главной */
 .categories-section {
     margin-bottom: 30px;
@@ -845,17 +776,5 @@ footer {
 @media (max-width: 768px) {
     .categories-grid {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    }
-    
-    .promo-banner h2 {
-        font-size: 1.8rem;
-    }
-    
-    .promo-content {
-        max-width: 100%;
-    }
-    
-    .promo-banner:before {
-        width: 150px;
     }
 }
