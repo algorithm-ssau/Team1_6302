@@ -44,6 +44,10 @@ app.get('/cart', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../cart.html'));
 });
 
+app.get('/checkout', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../checkout.html'));
+});
+
 // Запуск сервера
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));

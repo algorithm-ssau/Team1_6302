@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
           return;
         }
         
-        alert('Функция оформления заказа будет реализована в следующем обновлении');
-        // Здесь будет код для оформления заказа
+        window.location.href = 'checkout.html';
+        
       });
     }
     
@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCart();
       });
     }
+    
     
     // Отображаем текущее содержимое корзины
     renderCart();
