@@ -31,6 +31,22 @@
             <h1>Каталог велосипедов</h1>
         </div>
         
+        <div class="catalog-filters">
+            <div class="filter-group">
+                <label for="category">Категория:</label>
+                <select id="category" name="category">
+                    <option value="">Все категории</option>
+                    <option value="mountain">Горные</option>
+                    <option value="road">Шоссейные</option>
+                    <option value="city">Городские</option>
+                    <option value="children">Детские</option>
+                </select>
+            </div>
+            <a href="calculator.html" class="btn btn-primary calculator-link">
+                <i class="fas fa-calculator"></i> Подобрать велосипед
+            </a>
+        </div>
+        
         <div class="category-filter">
             <a href="catalog.html" class="category-link" data-category="all">Все</a>
             <a href="catalog.html?category=mountain" class="category-link" data-category="mountain">Горные</a>

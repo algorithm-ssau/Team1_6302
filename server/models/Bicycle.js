@@ -22,6 +22,11 @@ const BicycleSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  frameSize: {
+    type: String,
+    required: true,
+    enum: ['S', 'M', 'L']
+  },
   inStock: {
     type: Boolean,
     default: true
