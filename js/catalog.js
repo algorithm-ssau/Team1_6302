@@ -5,6 +5,18 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Проверяем, существует ли контейнер на странице
     if (!productContainer) return;
     
+    // Создаем модальное окно для описания
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 class="modal-title"></h2>
+        <p class="modal-description"></p>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
     // Получаем параметры из URL для фильтрации
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
@@ -56,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         </div>
         <div class="product-actions">
           <button class="btn btn-primary add-to-cart" data-id="${bicycle._id}">В корзину</button>
-          <a href="/product?id=${bicycle._id}" class="btn btn-secondary">Подробнее</a>
+          <button class="btn btn-info show-description" data-id="${bicycle._id}">Описание</button>
         </div>
       `;
       
@@ -75,4 +87,30 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
       });
     });
-  });
+
+    // Добавляем обработчики событий для кнопок "Описание"
+    document.querySelectorAll('.show-description').forEach(button => {
+      button.addEventListener('click', async function() {
+        const bicycleId = this.getAttribute('data-id');
+        const bicycle = await getBicycleById(bicycleId);
+        
+        if (bicycle) {
+          modal.querySelector('.modal-title').textContent = bicycle.name;
+          modal.querySelector('.modal-description').textContent = bicycle.description;
+          modal.style.display = 'block';
+        }
+      });
+    });
+
+    // Закрытие модального окна
+    modal.querySelector('.close-modal').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Закрытие модального окна при клике вне его
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+});
