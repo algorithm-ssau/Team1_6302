@@ -93,10 +93,8 @@ header {
     background-color: red;
     color: white;
 }
-.header_link.active .cart_count {
-    background-color: red;
-    color: white;
-}
+
+
 main {
     max-width: 1200px;
     margin: 80px auto 20px;
