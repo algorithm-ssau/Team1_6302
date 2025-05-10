@@ -87,7 +87,7 @@ const initDB = async () => {
         price: 32000,
         description: 'Компактный складной велосипед для путешествий и ежедневных поездок. Легко складывается и помещается в багажник автомобиля.',
         image: 'img/folding_bike.jpg',
-        frameSize: 'Universal',
+        frameSize: 'M',
         inStock: true,
         rating: 4.3,
         numReviews: 9
