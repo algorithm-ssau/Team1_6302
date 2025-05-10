@@ -8,7 +8,7 @@ const BicycleSchema = mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['mountain', 'road', 'city', 'children'] // Типы велосипедов
+    enum: ['mountain', 'road', 'city', 'children', 'electric', 'bmx', 'folding', 'gravel', 'track']
   },
   price: {
     type: Number,
@@ -25,7 +25,7 @@ const BicycleSchema = mongoose.Schema({
   frameSize: {
     type: String,
     required: true,
-    enum: ['S', 'M', 'L']
+    enum: ['XS', 'S', 'M', 'L', 'XL', 'Universal']
   },
   inStock: {
     type: Boolean,
