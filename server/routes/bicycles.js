@@ -12,7 +12,20 @@ router.get('/', async (req, res) => {
     if (req.query.category) {
       filter.category = req.query.category;
     }
-
+    // Фильтрация по цене, если указан минимум или максимум
+    if (req.query.minPrice || req.query.maxPrice) {
+      filter.price = {};
+      if (req.query.minPrice) {
+        filter.price.$gte = parseInt(req.query.minPrice);
+      }
+      if (req.query.maxPrice) {
+        filter.price.$lte = parseInt(req.query.maxPrice);
+      }
+    } 
+    // Фильтрация по размеру рамы
+    if (req.query.frameSize) {
+      filter.frameSize = req.query.frameSize;
+    }
     const bicycles = await Bicycle.find(filter);
     res.json(bicycles);
   } catch (err) {
@@ -47,14 +60,15 @@ router.get('/:id', async (req, res) => {
 // @access  Public (в реальном проекте здесь должна быть аутентификация)
 router.post('/', async (req, res) => {
   try {
-    const { name, category, price, description, image } = req.body;
+    const { name, category, price, description, image, frameSize } = req.body;
     
     const newBicycle = new Bicycle({
       name,
       category,
       price,
       description,
-      image
+      image,
+      frameSize
     });
     
     const bicycle = await newBicycle.save();
