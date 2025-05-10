@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let frameSize;
             if (height < 175) {
                 frameSize = 'S';
-            } else if (height < 190) {
+            } else if (height > 175 && height  < 190) {
                 frameSize = 'M';
             } else {
                 frameSize = 'L';

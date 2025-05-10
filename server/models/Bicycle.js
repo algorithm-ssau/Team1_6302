@@ -8,7 +8,7 @@ const BicycleSchema = mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['mountain', 'road', 'city', 'children', 'bmx', 'folding', 'gravel', 'track']
+    enum: ['mountain', 'road', 'city', 'children', 'bmx', 'fold', 'gravel', 'track']
   },
   price: {
     type: Number,

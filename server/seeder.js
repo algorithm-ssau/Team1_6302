@@ -83,7 +83,7 @@ const initDB = async () => {
       },
       {
         name: 'Складной велосипед Folding Master',
-        category: 'folding',
+        category: 'fold',
         price: 32000,
         description: 'Компактный складной велосипед для путешествий и ежедневных поездок. Легко складывается и помещается в багажник автомобиля.',
         image: 'img/folding_bike.jpg',
