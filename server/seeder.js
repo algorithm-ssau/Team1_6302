@@ -71,17 +71,6 @@ const initDB = async () => {
         numReviews: 15
       },
       {
-        name: 'Электровелосипед Urban E-Rider',
-        category: 'electric',
-        price: 85000,
-        description: 'Современный электровелосипед для городской среды. Мощный двигатель, большой запас хода и стильный дизайн.',
-        image: 'img/electric_bike.jpg',
-        frameSize: 'M',
-        inStock: true,
-        rating: 4.7,
-        numReviews: 23
-      },
-      {
         name: 'BMX Freestyle Pro',
         category: 'bmx',
         price: 30000,
