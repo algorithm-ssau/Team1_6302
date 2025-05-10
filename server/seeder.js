@@ -70,6 +70,10 @@ const initDB = async () => {
         rating: 4.2,
         numReviews: 15
       },
+
+
+
+      
       {
         name: 'BMX Freestyle Pro',
         category: 'bmx',
