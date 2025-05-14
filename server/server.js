@@ -35,9 +35,15 @@ app.get('/', (req, res) => {
 app.get('/catalog', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../catalog.html'));
 });
+app.get('/catalog.html', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../catalog.html'));
+});
 
 // Маршрут для страницы "О нас"
 app.get('/about', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../about.html'));
+});
+app.get('/about.html', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../about.html'));
 });
 
@@ -45,9 +51,23 @@ app.get('/about', (req, res) => {
 app.get('/cart', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../cart.html'));
 });
+app.get('/cart.html', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../cart.html'));
+});
 
 app.get('/checkout', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../checkout.html'));
+});
+app.get('/checkout.html', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../checkout.html'));
+});
+
+// Маршрут для страницы калькулятора
+app.get('/calculator', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../calculator.html'));
+});
+app.get('/calculator.html', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../calculator.html'));
 });
 
 // Запуск сервера
