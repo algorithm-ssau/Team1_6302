@@ -26,7 +26,7 @@ app.get('/api/test', (req, res) => {
 
 // Маршрут для главной страницы
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../index.html'));
+  res.redirect('/catalog');
 });
 
 // Маршрут для страницы каталога
