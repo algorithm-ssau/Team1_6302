@@ -30,6 +30,12 @@ app.get('/api/test', (req, res) => {
 app.get('/', (req, res) => {
   res.redirect('/catalog');
 });
+app.get('/main', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../main.html'));
+});
+app.get('/main.html', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../main.html'));
+});
 
 // Маршрут для страницы каталога
 app.get('/catalog', (req, res) => {
