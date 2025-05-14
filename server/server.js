@@ -17,7 +17,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/bicycles', require('./routes/bicycles'));
 
 // Статические файлы
-app.use(express.static(path.join(__dirname, '../')));
+app.use('/img', express.static(path.join(__dirname, '../img')));
+app.use('/css', express.static(path.join(__dirname, '../css')));
+app.use('/js', express.static(path.join(__dirname, '../js')));
 
 // Простой эндпоинт для проверки работы API
 app.get('/api/test', (req, res) => {
