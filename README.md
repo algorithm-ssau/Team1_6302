@@ -41,8 +41,8 @@ node seeder.js
 
 #### Запуск сервера
 ```bash
-cd server
-npm start
+cd ..
+npm start server
 ```
 Сервер будет доступен по адресу: http://localhost:5000
 
