@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Пожалуйста, выберите уровень опыта');
             }
 
-            // Определяем размер рамы на основе роста и пола
+            // Определяем размер рамы на основе роста
             let frameSize;
             if (height < 165) {
                 frameSize = 'S';
