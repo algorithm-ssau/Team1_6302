@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Определяем размер рамы на основе роста
             let frameSize;
-            if (height < 175) {
+            if (height < 165) {
                 frameSize = 'S';
-            } else if (height > 175 && height  < 190) {
+            } else if (height >=166 && height  < 179) {
                 frameSize = 'M';
             } else {
                 frameSize = 'L';

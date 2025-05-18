@@ -21,7 +21,7 @@ app.add_middleware(
 # Подключение к MongoDB
 MONGODB_URL = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
 client = AsyncIOMotorClient(MONGODB_URL)
-db = client.bicycle_shop
+db = client.velopro
 
 @app.get("/api/bicycles")
 async def get_bicycles():
